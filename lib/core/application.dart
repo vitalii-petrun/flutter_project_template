@@ -7,6 +7,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:project_template/presentation/redux/app_state.dart';
 import 'package:project_template/presentation/themes/theme.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:responsive_framework/responsive_framework.dart';
 
 class Application extends StatelessWidget {
   final Store<AppState> store;
@@ -22,6 +23,15 @@ class Application extends StatelessWidget {
         builder: (BuildContext context, _ViewModel vm) => MaterialApp(
           locale: vm.appLocale.locale,
           supportedLocales: L10n.all,
+          builder: (context, child) => ResponsiveWrapper.builder(
+            child,
+            defaultScale: true,
+            breakpoints: const [
+              ResponsiveBreakpoint.resize(300, name: MOBILE),
+              ResponsiveBreakpoint.autoScale(580, name: TABLET),
+              ResponsiveBreakpoint.autoScale(1000, name: DESKTOP),
+            ],
+          ),
           localizationsDelegates: const [
             AppLocalizations.delegate,
             GlobalMaterialLocalizations.delegate,
