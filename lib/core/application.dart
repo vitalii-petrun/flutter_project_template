@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:project_template/l10n/l10n.dart';
 import 'package:project_template/presentation/pages/home_page.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:project_template/presentation/themes/theme.dart';
 
 class Application extends StatelessWidget {
   const Application({Key? key}) : super(key: key);
@@ -10,9 +11,8 @@ class Application extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
+      theme: createLightTheme(),
+      darkTheme: createDarkTheme(),
       localizationsDelegates: const [
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
